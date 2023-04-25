@@ -8,14 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var userSelection = "ERROR"//by leaving this as your default you can easily tell if there is an error
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        NavigationStack{
+            VStack(){
+                Text("Pick your favorite type of dog")
+                
+                Button("🐩"){
+                    userSelection = "Poodle"
+                    print(userSelection)
+                }
+                Button("Pug"){
+                    userSelection = "Pug"
+                    print(userSelection)//print driven development
+                }
+                
+                Spacer()
+                NavigationLink(destination:                     poodleView(questionOneSelection: userSelection)) {
+                    Text("Next Question")
+                }
+                
+                /*
+                NavigationLink(destination: pugView()){
+                    Text("pug")
+                }
+                NavigationLink(destination: goldenView()){
+                    Text("golden retreiver")
+                }//these create buttons that send the user to a different page
+                */
+            }
         }
-        .padding()
+    
     }
 }
 
